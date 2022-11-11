@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Ficha3_LP
+PROJECTNAME=Ficha3_Laboratorio
 
 # Active Configuration
 DEFAULTCONF=Debug

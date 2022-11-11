@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=ficha3_lp
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/ficha3_lp
+CND_ARTIFACT_NAME_Debug=ficha3_laboratorio
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/ficha3_laboratorio
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=ficha3lp.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/ficha3lp.tar
+CND_PACKAGE_NAME_Debug=ficha3laboratorio.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/ficha3laboratorio.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=ficha3_lp
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/ficha3_lp
+CND_ARTIFACT_NAME_Release=ficha3_laboratorio
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/ficha3_laboratorio
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=ficha3lp.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/ficha3lp.tar
+CND_PACKAGE_NAME_Release=ficha3laboratorio.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/ficha3laboratorio.tar
 #
 # include compiler specific variables
 #
