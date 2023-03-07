@@ -3,7 +3,7 @@ package PP_ficha3;
 public class ex2 {
     public static void main(String[] args) {
 
-        int vetor[] = { 1, 2, 3, 4, 5, 6 };
+        int vetor[] = { 1, 2, 3, 4, 5, 6};
         int i, soma = 0;
 
 
