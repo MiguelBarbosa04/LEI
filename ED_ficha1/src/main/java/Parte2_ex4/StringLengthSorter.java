@@ -28,13 +28,15 @@ public class StringLengthSorter {
 
         ordenar(stringList);
 
-        for (String str : stringList) {
-            System.out.println(str);
+        for (int i = 0; i < stringList.size(); i++) {
+            String str = stringList.get(i);
+            System.out.println("Elemento " + i + ": " + str);
         }
+
     }
 
     public static void ordenar(List<String> list) {
-        // Usando o método Collections.sort com um comparador personalizado
+
         Collections.sort(list, (str1, str2) -> Integer.compare(str1.length(), str2.length()));
     }
 }

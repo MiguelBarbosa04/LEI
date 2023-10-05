@@ -19,10 +19,14 @@ public class Teste {
         Pair<Integer> intPair = new Pair<>(1, 2);
         Pair<String> stringPair = new Pair<>("Ola", "Tudo?");
 
+        
         System.out.println(intPair.getFirst());
         System.out.println(intPair.getSecond());
         System.out.println(stringPair.getFirst());
         System.out.println(stringPair.getSecond());
+       
+        
+        System.out.println(intPair.max());
     }
 
 }
