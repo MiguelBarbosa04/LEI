@@ -5,6 +5,8 @@
  */
 package ex3;
 
+import ex2.Pair;
+
 /**
  *
  * @author migue
@@ -25,6 +27,6 @@ public class UnorderedPairDemo {
             System.out.println(p2.getFirst() + " and " + p2.getSecond());
 
         }
-
+       
     }
 }

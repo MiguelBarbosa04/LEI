@@ -8,6 +8,7 @@ package ex2;
 /**
  *
  * @author migue
+ * @param <T>
  */
 public class Pair<T extends Comparable> {
 
@@ -35,12 +36,12 @@ public class Pair<T extends Comparable> {
         return second;
     }
     
-    public T setFirst(){
-        return this.first;
+    public void setFirst(T first){
+        this.first = first;
     }
     
-    public T setSecond(){
-        return this.second;
+    public void setSecond(T second){
+       this.second = second;
     }
     
     public T max() {
