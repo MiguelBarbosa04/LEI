@@ -24,24 +24,26 @@ public class ex2 {
                 Process process = pb.start();
                 System.out.println("Inicio do comando \"" + arg + "\".\n");
                 try (
-                         InputStream is = process.getInputStream();  InputStreamReader isr = new InputStreamReader(is);  BufferedReader br = new BufferedReader(isr);) {
+                        InputStream is = process.getInputStream();  
+                        InputStreamReader isr = new InputStreamReader(is);  
+                        BufferedReader br = new BufferedReader(isr);) {
                     String line;
                     while ((line = br.readLine()) != null) { // Use 'readLine' instead of 'readline'
                         System.out.println(line);
                     }
                 } catch (IOException e) {
-                    System.err.println("Error reading command output: " + e.getMessage());
+                    System.err.println("Erro ao ler o output do comando: " + e.getMessage());
                 }
 
                 int exitCode = process.waitFor();
-                System.out.println("Command \"" + arg + "\" finished with exit code: " + exitCode);
+                System.out.println("Comando \"" + arg + "\" acabou com código: " + exitCode);
             }
 
         } catch (IOException err) {
             System.out.println("Erro no acesso ao ficheiro");
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // Restore the interrupted status
-            System.err.println("Command execution interrupted: " + e.getMessage());
+            System.err.println("Execução do comando interrupdia: " + e.getMessage());
         }
     }
 }
