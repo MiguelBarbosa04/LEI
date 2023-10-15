@@ -12,9 +12,11 @@ package ex1;
 public class LinkedList<T> {
 
     Node<T> head;
+    Node<T> tail;
 
     public LinkedList() {
         head = null;
+        tail = null;
     }
 
     // Adicionar um elemento no final da lista
@@ -23,12 +25,10 @@ public class LinkedList<T> {
 
         if (head == null) {
             head = newNode;
+            tail = newNode;
         } else {
-            Node<T> current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
+            tail.next = newNode;
+            tail = newNode;
         }
     }
 
@@ -38,18 +38,24 @@ public class LinkedList<T> {
             return;
         }
 
-        if (head.data == data) {
+        if (head.data.equals(data)) {
             head = head.next;
+            if (head == null) {
+                tail = null;
+            }
             return;
         }
 
         Node<T> current = head;
-        while (current.next != null && current.next.data != data) {
+        while (current.next != null) {
+            if (current.next.data.equals(data)) {
+                current.next = current.next.next;
+                if (current.next == null) {
+                    tail = current;
+                }
+                return;
+            }
             current = current.next;
-        }
-
-        if (current.next != null) {
-            current.next = current.next.next;
         }
     }
 
@@ -57,9 +63,9 @@ public class LinkedList<T> {
     public void printList() {
         Node<T> current = head;
         while (current != null) {
-            System.out.print(current.data + " ");
+            System.out.print(current.data + " -> ");
             current = current.next;
         }
-        System.out.println();
+        System.out.println("null");
     }
 }
