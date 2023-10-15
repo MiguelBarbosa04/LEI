@@ -1,7 +1,7 @@
-package ex1;
+package ex1_ex2;
 
-import ex1.LinkedList;
-import static ex1.LinkedList.*;
+import ex1_ex2.LinkedList;
+import static ex1_ex2.LinkedList.*;
 
 
 /*
