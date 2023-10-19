@@ -16,26 +16,26 @@ import java.util.logging.Logger;
 public class HelloThread implements Runnable {
 
     private int threadNumber;
-    private int seconds;
 
-    public HelloThread(int threadNumber, int seconds) {
+    public HelloThread(int threadNumber) {
         this.threadNumber = threadNumber;
-        this.seconds = seconds;
+
     }
 
     @Override
     public void run() {
         String threadName = Thread.currentThread().getName();
-        for (int count = 0; count <= seconds; count++) {
+
+        int nLinhas = 10;
+        for (int i = 0; i < nLinhas; i++) {
             System.out.println("[" + threadName + "] Eu sou uma thread!");
             try {
-                sleep(1000);
-                count++;
+                Thread.sleep(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(HelloThread.class.getName()).log(Level.SEVERE, null, ex);
+                return;
             }
         }
-
     }
 
     public static void main(String args[]) {
@@ -47,10 +47,16 @@ public class HelloThread implements Runnable {
 
         int seconds = Integer.parseInt(args[0]);
 
-        Thread thread = new Thread(new HelloThread(1, seconds));
-
+        Thread thread = new Thread(new HelloThread(1));
         thread.setName("Thread 1");
         thread.start();
 
+        try {
+            Thread.sleep(seconds * 1000); // 
+        } catch (InterruptedException ex) {
+            Logger.getLogger(HelloThread.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        thread.interrupt();
     }
 }
