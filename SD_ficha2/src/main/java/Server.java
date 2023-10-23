@@ -1,63 +1,49 @@
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author migue
- */
 public class Server {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws IOException {
-         ServerSocket serverSocket = null;
-        Socket clientSocket = null;
-        PrintWriter out = null;
-        BufferedReader in = null;
+    public static void main(String[] args) {
+        int portNumber = 25; // Porta do servidor
 
-        try {
-            serverSocket = new ServerSocket(25);
-            System.out.println("Server listening on port 25...");
+        try ( ServerSocket serverSocket = new ServerSocket(portNumber)) {
+            System.out.println("Servidor Knock-Knock está aguardando conexões na porta " + portNumber);
+
+            while (true) {
+                // Espera por uma conexão de cliente
+                Socket clientSocket = serverSocket.accept();
+                System.out.println("Cliente conectado: " + clientSocket.getInetAddress());
+
+                try (
+                         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);  BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
+                    // Inicia o  "Knock-Knock" enviando a primeira mensagem
+                    out.println("Knock! Knock!");
+                    // Cria uma instância do protocolo para gerenciar a conversa
+                    KnockKnockProtocol protocol = new KnockKnockProtocol();
+                    String clientInput;
+
+                    // Entra em loop para lidar com a conversa
+                    while ((clientInput = in.readLine()) != null) {
+                        // Processa a entrada do cliente usando o protocolo
+                        String serverResponse = protocol.processInput(clientInput);
+                        // Envia a resposta do servidor de volta ao cliente
+                        out.println(serverResponse);
+
+                        // Verifica se o cliente escolheu encerrar a conversa
+                        if (serverResponse.equals("Bye.")) {
+                            break;
+                        }
+                    }
+                    ;
+
+                } catch (IOException e) {
+                    System.err.println("Erro na comunicação com o cliente: " + e.getMessage());
+                }
+            }
         } catch (IOException e) {
-            System.out.println("Could not listen on port: 25");
-            System.exit(-1);
+            System.err.println("Erro no servidor: " + e.getMessage());
         }
-
-        try {
-            clientSocket = serverSocket.accept();
-            System.out.println("Client connected...");
-        } catch (IOException e) {
-            System.out.println("Accept failed!");
-            System.exit(-1);
-        }
-
-        out = new PrintWriter(clientSocket.getOutputStream(), true);
-        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-
-        String userInput;
-
-        while ((userInput = in.readLine()) != null) {
-            System.out.println(serverSocket + ":" + clientSocket + ":" + userInput);
-            out.println(serverSocket + ":" + clientSocket + ":" + userInput);
-           
-        }
-
-        out.close();
-        in.close();
-        clientSocket.close();
-        serverSocket.close();
     }
-    
 }
