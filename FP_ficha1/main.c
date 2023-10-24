@@ -147,7 +147,7 @@ void ex3Parte() {
     printf("O valor agora de v1 é :  %d", v1);
     v2 = (v2 + ++v1) - v2;
     printf("O valor agora de v2 é :  %d", v2);
-    return 0;
+   
 }
 
 void ex4Parte2() {
@@ -227,14 +227,14 @@ void ex1Parte3() {
 
     valorLiquido = valorIliquido + valorSubsidioAlimentacao - valorATirarDoIRS - valorParaSS;
     printf("\nO valor liquido é : %.2f", valorLiquido);
-    return 0;
+    
 }
 
 int main(int argc, char** argv) {
 
     
    //FICHA 1 DE FP//
-  
+  ex1Parte3();
 
     return (EXIT_SUCCESS);
 }
