@@ -255,22 +255,99 @@ void Parte2Ex5() {
     scanf("%d", &x);
     printf("diga a coordenada y: ");
     scanf("%d", &y);
-    
-    if(x < 0 && y < 0){
+
+    if (x < 0 && y < 0) {
         printf("QUADRANTE 3");
-    }else if(x > 0 && y > 0){
-         printf("QUADRANTE 1");
-    }else if(x > 0 && y < 0){
-         printf("QUADRANTE 4");
-    }else if(x < 0 && y > 0){
-         printf("QUADRANTE 2");
+    } else if (x > 0 && y > 0) {
+        printf("QUADRANTE 1");
+    } else if (x > 0 && y < 0) {
+        printf("QUADRANTE 4");
+    } else if (x < 0 && y > 0) {
+        printf("QUADRANTE 2");
     }
+}
+
+void Parte3() {
+
+
+
+
+
+
+    int codigoFuncionario, dias;
+    float valorIliquido, valorSubsidioAlimentacao;
+    float valorATirarDoIRS, valorComIRSRetirado;
+    float valorParaEntidadePatronal, valorLiquido, segurancaSocial;
+    char cargo;
+
+
+    printf("Diga o seu código de funcionário: ");
+    scanf("%d", &codigoFuncionario);
+    printf("Diga o seu cargo de trabalho --> E - empregado  C - chefe  A - administrador : ");
+    scanf(" %c", &cargo);
+    printf("Diga o número de dias que trabalhou: ");
+    scanf("%d", &dias);
+
+
+    switch (cargo) {
+
+        case 'E':
+
+            valorIliquido = 40 * dias;
+            valorSubsidioAlimentacao = dias * 5;
+
+
+
+            break;
+        case 'C':
+            valorIliquido = 60 * dias;
+            valorSubsidioAlimentacao = dias * 7.5;
+
+
+            break;
+
+        case 'A':
+            break;
+            valorIliquido = 80 * dias;
+            valorSubsidioAlimentacao = dias * 7.5;
+
+
+        default:
+            printf("inseriu um cargo inválido");
+            break;
+    }
+
+
+    if (valorIliquido < 1000) {
+        valorATirarDoIRS = valorIliquido * 0.1;
+    } else {
+        valorATirarDoIRS = valorIliquido * 0.2;
+    }
+
+
+    if (cargo == 'A') {
+
+        segurancaSocial = valorIliquido * 0.09;
+        valorParaEntidadePatronal = valorIliquido * 0.21;
+    } else {
+        segurancaSocial = valorIliquido * 0.11;
+        valorParaEntidadePatronal = valorIliquido * 0.2375;
+    }
+
+    valorLiquido = valorIliquido + valorSubsidioAlimentacao - valorATirarDoIRS - segurancaSocial;
+
+    printf("\nO valor iliquido é : %.2f", valorIliquido);
+    printf("\nO valor do subsidio de alimentacao é : %.2f", valorSubsidioAlimentacao);
+    printf("\nO valor a dar ao estado do IRS é : %.2f", valorATirarDoIRS);
+    printf("\nO valor da Seguramça Social é : %.2f", segurancaSocial);
+    printf("\nO valor da entidade Patronal é : %.2f", valorParaEntidadePatronal);
+    printf("\nO valor liquido é : %.2f", valorLiquido);
 }
 
 int main(int argc, char** argv) {
 
 
-    Parte2Ex5();
+    Parte3();
 
 
 
