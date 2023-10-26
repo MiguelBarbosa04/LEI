@@ -16,14 +16,15 @@ public class Run2 extends Thread {
 
     public Run2(SharedObj s, int i) {
         share = s;
-        n = 1;
+        n = i;
     }
 
+    @Override
     public void run() {
         String myname = Thread.currentThread().getName();
         try {
             share.setNumber(n);
-            Thread.sleep(1000);
+            Thread.sleep(n*1000);
             //share.setNumber(n);
             System.out.println("[" + myname + "] _Number:" + share.getNumber());
             share.setName("share.name_definido_por:_" + myname);
