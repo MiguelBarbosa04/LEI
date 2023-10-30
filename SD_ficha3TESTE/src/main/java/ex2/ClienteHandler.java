@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ex2;
-
 import java.io.*;
-import java.net.Socket;
+import java.net.*;
+import java.util.Scanner;
 
-public class ClienteHandler extends Thread {
-
+public class ClienteHandler extends Thread{
     private Socket clienteSocket;
     private PrintWriter out;
     private BufferedReader in;
@@ -24,6 +18,7 @@ public class ClienteHandler extends Thread {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public void run() {
@@ -56,7 +51,7 @@ public class ClienteHandler extends Thread {
                 mensagemDestinatario += partes[i] + " ";
             }
             for (ClienteHandler cliente : Servidor.getClientes()) {
-                if (cliente.nome.equals (destinatario)) {
+                if (cliente.nome.equals(destinatario) ) {
                     cliente.out.println(mensagemDestinatario);
                     return;
                 }
@@ -70,7 +65,6 @@ public class ClienteHandler extends Thread {
             }
         }
     }
-    
-    
+
    
 }

@@ -1,4 +1,5 @@
 ex1\TcpMultiServer.class
+ex2\ClienteHandlerTest.class
 ex2\ClienteHandler.class
 ex1\WorkerThread.class
 ex2\Servidor.class
