@@ -5,11 +5,21 @@
  */
 package ex2;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ *
+ * @author Miguel
+ */
 public class ClienteHandler extends Thread {
 
+    /**
+     * @param args the command line arguments
+     */
     private Socket clienteSocket;
     private PrintWriter out;
     private BufferedReader in;
@@ -38,12 +48,6 @@ public class ClienteHandler extends Thread {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                clienteSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 
@@ -56,7 +60,7 @@ public class ClienteHandler extends Thread {
                 mensagemDestinatario += partes[i] + " ";
             }
             for (ClienteHandler cliente : Servidor.getClientes()) {
-                if (cliente.nome.equals (destinatario)) {
+                if (cliente.nome.equals(destinatario)) {
                     cliente.out.println(mensagemDestinatario);
                     return;
                 }
@@ -70,7 +74,4 @@ public class ClienteHandler extends Thread {
             }
         }
     }
-    
-    
-   
 }
