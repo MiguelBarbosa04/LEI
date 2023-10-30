@@ -1,5 +1,4 @@
 ex1\TcpMultiServer.class
-ex2\ChatClient.class
-ex2\MultiClientChatServer.class
+ex2\ClienteHandler.class
 ex1\WorkerThread.class
-ex2\MultiClientChatServer$ClientHandler.class
+ex2\Servidor.class
