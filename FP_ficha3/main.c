@@ -268,13 +268,13 @@ void P2Ex5() {
     printf("\nVoto 0 : %d", count0);
 
 
-    percentagem1 = count1 / countGlobal;
-    percentagem2 = countGlobal * count2;
-    percentagem3 = countGlobal * count3;
-    percentagem4 = countGlobal * count4;
-    percentagem5 = countGlobal * count5;
-    percentagem9 = countGlobal * count9;
-    percentagem0 = countGlobal * count0;
+    percentagem1 = (count1 / countGlobal) * 100;
+    percentagem2 = (count2 / countGlobal) * 100;
+    percentagem3 = (count3 / countGlobal) * 100;
+    percentagem4 = (count4 / countGlobal) * 100;
+    percentagem5 = (count5 / countGlobal) * 100;
+    percentagem9 = (count9 / countGlobal) * 100;
+    percentagem0 = (count0 / countGlobal) * 100;
 
 
     printf("A percentagem de votos da 1 é: %2.f", percentagem1);
