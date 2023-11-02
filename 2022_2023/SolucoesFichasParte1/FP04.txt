@@ -1,0 +1,151 @@
+1.
+#define MAX_PRODUTOS 10
+
+int main() {
+    int i;
+    float produtos[MAX_PRODUTOS], total = 0;
+
+    for (i = 0; i < MAX_PRODUTOS; i++) {
+        printf("\nProduto %d: ", i);
+        scanf("%f", &produtos[i]);
+
+        total += produtos[i];
+    }
+
+    printf("O Tootal é %4.2f", total);
+
+    return 0;
+}
+
+2.
+
+#define MAX_STRING 28
+#define DESLOCAMENTO 4
+
+int main() {
+    int i = 0;
+    char palavra[MAX_STRING];
+
+    puts("Insrira uma frase");
+    scanf("%s", palavra);
+
+    while (palavra[i] != '\0') {
+
+        if (palavra[i] >= 'A' && palavra[i] <= 'Z') {
+            palavra[i] = (palavra[i] - 65 + DESLOCAMENTO) % 26 + 65;
+        } else {
+            palavra[i] = (palavra[i] - 97 + DESLOCAMENTO) % 26 + 97;
+        }
+
+        i++;
+    }
+
+    printf("%s", palavra);
+
+    return 0;
+}
+
+3.
+
+#define LINHAS 4
+#define COLUNAS 5
+
+int main() {
+    int i, j, valor, contador = 0, matriz[LINHAS][COLUNAS];
+
+    for (i = 0; i < LINHAS; i++) {
+        for (j = 0; j < COLUNAS; j++) {
+            printf("\nmatriz[%d][%d]: ", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    puts("Porcurar: ");
+    scanf("%d", &valor);
+
+    for (i = 0; i < LINHAS; i++) {
+        for (j = 0; j < COLUNAS; j++) {
+            if (matriz[i][j] == valor) {
+                contador++;
+            }
+        }
+    }
+
+    for (i = 0; i < LINHAS; i++) {
+        puts("");
+        for (j = 0; j < COLUNAS; j++) {
+            printf("%3d", matriz[i][j]);
+        }
+    }
+
+    printf("\nEncontrados: %d", contador);
+
+    return 0;
+}
+
+4.
+
+#define LINS_COLS 3
+
+int main() {
+    int i, j, min, max, matriz[LINS_COLS][LINS_COLS];
+
+    for (i = 0; i < LINS_COLS; i++) {
+        for (j = 0; j < LINS_COLS; j++) {
+            printf("\nmatriz[%d][%d]", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    min = matriz[0][0];
+    max = matriz[0][0];
+    for (i = 0; i < LINS_COLS; i++) {
+        for (j = 0; j < LINS_COLS; j++) {
+            if (matriz[i][j] > max) {
+                max = matriz[i][j];
+            } else if (matriz[i][j] < min) {
+                min = matriz[i][j];
+            }
+        }
+    }
+
+    for (i = 0; i < LINS_COLS; i++) {
+        puts("");
+        for (j = 0; j < LINS_COLS; j++) {
+            printf("%3d", matriz[i][j]);
+        }
+    }
+
+    printf("\nMin: %d", min);
+    printf("\nMax: %d", max);
+
+    return 0;
+}
+
+5.
+
+#define MAX_STRING 28
+
+int main() {
+    int i = 0, equals = 1;
+    char palavra1[MAX_STRING];
+    char palavra2[MAX_STRING];
+
+    puts("Insira uma string:");
+    scanf("%s", palavra1);
+    puts("Insira uma segunda string:");
+    scanf("%s", palavra2);
+
+    while (equals && (palavra1[i] != '\0' || palavra2[i] != '\0')) {
+        if (palavra1[i] != palavra2[i]) {
+            equals = 0;
+        }
+        i++;
+    }
+
+    printf("\n%s %s", palavra1, palavra2);
+
+    printf("\n%s", equals ? "São iguais" : "Não são iguais");
+
+    return 0;
+}
