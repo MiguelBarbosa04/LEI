@@ -229,9 +229,8 @@ void P2Ex4() {
 
 void P2Ex5() {
 
-    int voto, count0 = 0, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count9, countGlobal;
+    int voto, count0 = 0, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count9 = 0, countGlobal;
     float percentagem1, percentagem2, percentagem3, percentagem4, percentagem5, percentagem0, percentagem9;
-    int i;
 
     do {
         printf("Diga o candidato que quer votar: ");
@@ -268,32 +267,124 @@ void P2Ex5() {
     printf("\nVoto 0 : %d", count0);
 
 
-    percentagem1 = (count1 / countGlobal) * 100;
-    percentagem2 = (count2 / countGlobal) * 100;
-    percentagem3 = (count3 / countGlobal) * 100;
-    percentagem4 = (count4 / countGlobal) * 100;
-    percentagem5 = (count5 / countGlobal) * 100;
-    percentagem9 = (count9 / countGlobal) * 100;
-    percentagem0 = (count0 / countGlobal) * 100;
+    percentagem1 = ((float) count1 / countGlobal) * 100;
+    percentagem2 = ((float) count2 / countGlobal) * 100;
+    percentagem3 = ((float) count3 / countGlobal) * 100;
+    percentagem4 = ((float) count4 / countGlobal) * 100;
+    percentagem5 = ((float) count5 / countGlobal) * 100;
+    percentagem9 = ((float) count9 / countGlobal) * 100;
+    percentagem0 = ((float) count0 / countGlobal) * 100;
 
-
-    printf("A percentagem de votos da 1 é: %2.f", percentagem1);
-    printf("A percentagem de votos da 2 é: %2.f", percentagem2);
-    printf("A percentagem de votos da 3 é: %2.f", percentagem3);
-    printf("A percentagem de votos da 4 é: %2.f", percentagem4);
-    printf("A percentagem de votos da 5 é: %2.f", percentagem5);
-    printf("A percentagem de votos da 9 é: %2.f", percentagem9);
-    printf("A percentagem de votos da 0 é: %2.f", percentagem0);
-
+    printf("A percentagem de votos da 1 é: %.2f%%\n", percentagem1);
+    printf("A percentagem de votos da 2 é: %.2f%%\n", percentagem2);
+    printf("A percentagem de votos da 3 é: %.2f%%\n", percentagem3);
+    printf("A percentagem de votos da 4 é: %.2f%%\n", percentagem4);
+    printf("A percentagem de votos da 5 é: %.2f%%\n", percentagem5);
+    printf("A percentagem de votos da 9 é: %.2f%%\n", percentagem9);
+    printf("A percentagem de votos da 0 é: %.2f%%\n", percentagem0);
 
 
 
 
 }
 
+void P3() {
+
+
+    int codigoFuncionario, dias;
+    float valorIliquido, valorSubsidioAlimentacao;
+    float valorATirarDoIRS, valorComIRSRetirado;
+    float valorParaEntidadePatronal, valorLiquido, totalAPagarImpostos, segurancaSocial, totalAPagarSubsidios, totalAPagarVencimento;
+    char cargo, op;
+
+    do {
+        do {
+            printf("Diga o seu código de funcionário: ");
+            scanf("%d", &codigoFuncionario);
+        } while (codigoFuncionario < 0);
+
+        do {
+            printf("Diga o seu cargo de trabalho --> E - empregado  C - chefe  A - administrador: ");
+            scanf(" %c", &cargo);
+        } while (cargo != 'E' && cargo != 'C' && cargo != 'A');
+
+        do {
+            printf("Diga o número de dias que trabalhou: ");
+            scanf("%d", &dias);
+        } while (dias < -1);
+
+        switch (cargo) {
+            case 'E':
+                valorIliquido = 40 * dias;
+                valorSubsidioAlimentacao = dias * 5;
+                break;
+            case 'C':
+                valorIliquido = 60 * dias;
+                valorSubsidioAlimentacao = dias * 7.5;
+                break;
+            case 'A':
+                valorIliquido = 80 * dias;
+                valorSubsidioAlimentacao = dias * 7.5;
+                break;
+            default:
+                printf("Inseriu um cargo inválido\n");
+                break;
+        }
+
+
+        for (int irs = 0; irs <= valorATirarDoIRS; irs++) {
+            if (valorIliquido < 1000) {
+                valorATirarDoIRS = valorIliquido * 0.1;
+            } else if (valorIliquido >= 1000) {
+                valorATirarDoIRS = valorIliquido * 0.2;
+            } else {
+                valorATirarDoIRS = valorIliquido * 0.3;
+            }
+        }
+
+        for (int um = 1; um <= 1; um++) {
+            if (cargo == 'A') {
+                segurancaSocial = valorIliquido * 0.09;
+                valorParaEntidadePatronal = valorIliquido * 0.21;
+            } else {
+                segurancaSocial = valorIliquido * 0.11;
+                valorParaEntidadePatronal = valorIliquido * 0.2375;
+            }
+        }
+
+
+        for (int dia = 1; dia <= dias; dia++) {
+            if (dia > 20) {
+                valorIliquido += valorIliquido * 0.05;
+            } else if (dia > 17) {
+                valorIliquido += valorIliquido * 0.02;
+            }
+        }
+
+        valorLiquido = valorIliquido + valorSubsidioAlimentacao - valorATirarDoIRS - segurancaSocial;
+
+        printf("\nO valor ilíquido é: %.2f", valorIliquido);
+        printf("\nO valor do subsídio de alimentação é: %.2f", valorSubsidioAlimentacao);
+        printf("\nO valor a pagar ao estado de IRS é: %.2f", valorATirarDoIRS);
+        printf("\nO valor da Segurança Social é: %.2f", segurancaSocial);
+        printf("\nO valor da entidade Patronal é: %.2f", valorParaEntidadePatronal);
+        printf("\nO valor líquido é: %.2f\n", valorLiquido);
+
+        totalAPagarVencimento += valorLiquido;
+        totalAPagarSubsidios += valorSubsidioAlimentacao;
+        totalAPagarImpostos += valorATirarDoIRS + segurancaSocial + valorParaEntidadePatronal;
+        printf("\nTotal a pagar de salário aos funcionários: %f", totalAPagarVencimento);
+        printf("\nTotal a pagar de subsidios: %f", totalAPagarSubsidios);
+        printf("\nTotal a pagar de impostos: %f", totalAPagarImpostos);
+
+        printf("\nQuer fazer outro calculo? Diga s/S");
+        scanf(" %c", &op);
+    } while (op == 's' || op == 'S');
+}
+
 int main(int argc, char** argv) {
 
-    P2Ex5();
+    P3();
 
 
     return (EXIT_SUCCESS);
