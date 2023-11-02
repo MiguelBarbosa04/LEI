@@ -254,10 +254,10 @@ void P2Ex5() {
             printf("Insiriu um caracter invalido");
         }
     } while (voto != -1);
-    
-   
-    
-    
+
+
+
+
     countGlobal = count1 + count2 + count3 + count4 + count5 + count9 + count0;
     printf("\nVoto 1 : %d", count1);
     printf("\nVoto 2 : %d", count2);
