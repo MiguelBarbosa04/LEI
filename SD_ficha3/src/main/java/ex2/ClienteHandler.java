@@ -74,4 +74,9 @@ public class ClienteHandler extends Thread {
             }
         }
     }
+    
+    /* mensagem para todos -> "Olá, pessoal"
+    /* mensagem privada -> "Para Joaquim Boas, Joaquim!"
+    /* Caso não exista o destinário é recebido uma mensagem a dizer o mesmo
+    */
 }
