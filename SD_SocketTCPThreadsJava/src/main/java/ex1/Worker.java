@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,12 +19,14 @@ public class Worker extends Thread {
         this.numero = n;
     }
 
+    @Override
     public void run() {
         for (int i = 0; i < 5; i++) {
             try {
                 frases.add("Frase da thread " + numero);
                 Thread.sleep(500 + i * 10);
             } catch (Exception ex) {
+                throw new RuntimeException(ex);
             }
         }
     }

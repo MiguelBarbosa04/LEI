@@ -5,10 +5,6 @@
  */
 package ex1;
 
-/**
- *
- * @author migue
- */
 import java.util.ArrayList;
 
 public class ObjSharing {
@@ -23,9 +19,9 @@ public class ObjSharing {
             try {
                 Thread.sleep(1000);
             } catch (Exception ex) {
+                throw new RuntimeException(ex);
             }
-            for (int k = 0; k < asFrases.size(); k++)
-                System.out.println(asFrases.get(k));
+            for (String asFrase : asFrases) System.out.println(asFrase);
         }
     }
 }
