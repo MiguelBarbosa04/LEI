@@ -52,28 +52,39 @@ public class ClienteHandler extends Thread {
     }
 
     private void enviarMensagemParaDestinatario(String mensagem) {
-        String[] partes = mensagem.split(" ");
-        if (partes.length >= 3 && partes[0].equals("Para")) {
+        String[] partes = mensagem.split(" ", 4);  // Limita a divisão a 4 partes
+        if (partes.length >= 4 && partes[0].equalsIgnoreCase("Para")) {
             String destinatario = partes[1];
-            String mensagemDestinatario = nome + " (Privado): ";
-            for (int i = 2; i < partes.length; i++) {
-                mensagemDestinatario += partes[i] + " ";
-            }
-            for (ClienteHandler cliente : Servidor.getClientes()) {
-                if (cliente.nome.equals(destinatario)) {
-                    cliente.out.println(mensagemDestinatario);
-                    return;
-                }
-            }
-            out.println("Destinatário não encontrado.");
+            String mensagemDestinatario = nome + " (Privado): " + partes[3];
+
+            // Envia a mensagem privada para o destinatário
+            enviarMensagemPrivada(destinatario, mensagemDestinatario);
         } else {
-            for (ClienteHandler cliente : Servidor.getClientes()) {
-                if (cliente != this) {
-                    cliente.out.println(nome + ": " + mensagem);
-                }
+            // Se não for uma mensagem privada, envia para todos
+            enviarMensagemParaTodos(nome + ": " + mensagem);
+        }
+    }
+
+    private void enviarMensagemPrivada(String destinatario, String mensagem) {
+        for (ClienteHandler cliente : Servidor.getClientes()) {
+            if (cliente.nome.equals(destinatario)) {
+                cliente.out.println(mensagem);
+                return;
+            }
+        }
+        out.println("Destinatário não encontrado.");
+    }
+
+    private void enviarMensagemParaTodos(String mensagem) {
+        for (ClienteHandler cliente : Servidor.getClientes()) {
+            if (cliente != this) {
+                cliente.out.println(mensagem);
             }
         }
     }
+
+
+
     
     /* mensagem para todos -> "Olá, pessoal"
     /* mensagem privada -> "Para Joaquim Boas, Joaquim!"
