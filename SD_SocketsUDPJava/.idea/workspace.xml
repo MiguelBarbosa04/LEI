@@ -17,6 +17,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -30,6 +33,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "SD",
     "last_opened_file_path": "C:/Users/Miguel/Documents/GitHub/LEI/SD_SocketTCPThreadsJava",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -128,6 +132,7 @@
       <workItem from="1700596599252" duration="247000" />
       <workItem from="1700597797638" duration="280000" />
       <workItem from="1700599605078" duration="3315000" />
+      <workItem from="1700605164802" duration="9000" />
     </task>
     <servers />
   </component>
