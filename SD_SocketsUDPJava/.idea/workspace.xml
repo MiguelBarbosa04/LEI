@@ -17,9 +17,6 @@
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -33,8 +30,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "SD",
-    "last_opened_file_path": "C:/Users/Miguel/Documents/GitHub/LEI/SD_SocketTCPThreadsJava",
+    "last_opened_file_path": "C:/Users/Miguel/Documents/NetBeansProjects/SD_ficha3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -43,7 +39,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.MultiClientChatServer">
+  <component name="RunManager" selected="Application.ex2.MulticastServer">
     <configuration name="ChatClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ex1Parte2.ChatClient" />
       <module name="SD_SocketsUDPJava" />
@@ -83,8 +79,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MulticastChatClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ex1Parte2.MulticastChatClient" />
+    <configuration name="MulticastServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ex1Parte2.MulticastServer" />
       <module name="SD_SocketsUDPJava" />
       <extension name="coverage">
         <pattern>
@@ -96,12 +92,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MulticastChatServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ex1Parte2.MulticastChatServer" />
+    <configuration name="ex2.MulticastServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ex2.MulticastServer" />
       <module name="SD_SocketsUDPJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ex1Parte2.*" />
+          <option name="PATTERN" value="ex2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -111,11 +107,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ex2.MulticastServer" />
+        <item itemvalue="Application.MulticastServer" />
         <item itemvalue="Application.MultiClientChatServer" />
         <item itemvalue="Application.MultiServerChat" />
         <item itemvalue="Application.ChatClient" />
-        <item itemvalue="Application.MulticastChatServer" />
-        <item itemvalue="Application.MulticastChatClient" />
       </list>
     </recent_temporary>
   </component>
@@ -131,8 +127,7 @@
       <workItem from="1700592915964" duration="2070000" />
       <workItem from="1700596599252" duration="247000" />
       <workItem from="1700597797638" duration="280000" />
-      <workItem from="1700599605078" duration="3315000" />
-      <workItem from="1700605164802" duration="9000" />
+      <workItem from="1700599605078" duration="5545000" />
     </task>
     <servers />
   </component>
