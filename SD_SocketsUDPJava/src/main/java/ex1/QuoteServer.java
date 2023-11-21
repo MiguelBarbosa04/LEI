@@ -17,3 +17,5 @@ public class QuoteServer {
         new QuoteServerThread().start();
     }
 }
+
+/*PARA USAR É LIGAR O SERVER E DEPOIS NO TERMINAL JAVA QUOTECLIENT.JAVA LOCALHOST*/

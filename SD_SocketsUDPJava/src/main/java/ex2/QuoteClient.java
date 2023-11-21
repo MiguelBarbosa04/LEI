@@ -1,5 +1,5 @@
 package ex2;
-import ex1.*;
+
 import java.io.IOException;
 import java.net.*;
 

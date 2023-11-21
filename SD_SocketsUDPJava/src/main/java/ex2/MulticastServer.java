@@ -16,3 +16,4 @@ public class MulticastServer {
         new MulticastServerThread().start();
     }
 }
+/*PARA USAR É LIGAR O SERVER E DEPOIS NO TERMINAL JAVA MULTICASTCLIENT.JAVA */
