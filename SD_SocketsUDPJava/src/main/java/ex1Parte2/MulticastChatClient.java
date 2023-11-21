@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
+import java.util.Scanner;
 
 public class MulticastChatClient {
     private static final String MULTICAST_GROUP = "230.0.0.1";
@@ -36,14 +37,14 @@ public class MulticastChatClient {
             clientName = scanner.nextLine();
 
             // Envio do nome do cliente para o servidor
-            out.println(clientName);
+            System.out.println(clientName);
 
             String userInput;
             // Loop para enviar mensagens para o servidor continuamente
             System.out.print(" --------------------------------------------------\nExemplos de mensagens:\n" + " - mensagem para todos: \"Olá, pessoal\"\n" + " - mensagem privada: \"Para Joaquim Boas, Joaquim!\"\n  --------------------------------------------------\n ");
             while (true) {
                 userInput = scanner.nextLine();
-                out.println(userInput);
+               System.out.println(userInput);
             }
         } catch (IOException e) {
             e.printStackTrace();
