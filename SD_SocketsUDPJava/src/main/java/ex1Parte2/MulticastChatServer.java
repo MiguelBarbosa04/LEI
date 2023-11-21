@@ -1,46 +1,40 @@
 package ex1Parte2;
 
 import java.io.IOException;
-        import java.net.DatagramPacket;
-        import java.net.InetAddress;
-        import java.net.MulticastSocket;
-        import java.text.SimpleDateFormat;
-        import java.util.Date;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MulticastChatServer {
+
+    private static final String MULTICAST_GROUP = "230.0.0.1";
     private static final int PORT = 4446;
-    private static final String GROUP_ADDRESS = "230.0.0.1";
-    private static final int BUFFER_SIZE = 1024;
 
     public static void main(String[] args) {
-        try (MulticastSocket serverSocket = new MulticastSocket(PORT)) {
-            InetAddress group = InetAddress.getByName(GROUP_ADDRESS);
+        try ( MulticastSocket serverSocket = new MulticastSocket()) {
+            InetAddress group = InetAddress.getByName(MULTICAST_GROUP);
             serverSocket.joinGroup(group);
 
-            System.out.println("MulticastChatServer is running on port " + PORT);
-
-            byte[] buffer = new byte[BUFFER_SIZE];
+            System.out.println("MulticastChatServer is running on group " + MULTICAST_GROUP);
 
             while (true) {
-                DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-                serverSocket.receive(packet);
+                // Read messages from some source (e.g., a central message storage)
+                List<String> messages = CentralMessageStorage.getAllMessages();
 
-                String message = new String(packet.getData(), 0, packet.getLength());
-                System.out.println("Received message: " + message);
+                for (String message : messages) {
+                    // Broadcast the message to all clients in the multicast group
+                    byte[] buffer = message.getBytes();
+                    DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
+                    serverSocket.send(packet);
+                }
 
-                // Process the received message (you can implement your logic here)
-
-                // Broadcast the message to all clients
-                broadcastMessage(message, serverSocket, group);
+                // Simulate some delay before broadcasting again
+                Thread.sleep(5000); // Adjust the interval as needed
             }
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    private static void broadcastMessage(String message, MulticastSocket socket, InetAddress group) throws IOException {
-        byte[] buffer = message.getBytes();
-        DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, PORT);
-        socket.send(packet);
     }
 }
