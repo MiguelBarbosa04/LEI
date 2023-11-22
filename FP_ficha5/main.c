@@ -21,6 +21,51 @@
 
 
 
+void P3() {
+
+    int diasArray[12];
+    float valorIliquidoArray[12], valorATirarDoIRSArray[12], valorParaEntidadePatronalArray[12], valorLiquidoArray[12], valorSubsidioAlimentacaoArray[12];
+    float segurancaSocialArray[12], totalAPagarVencimentoArray[12], totalAPagarSubsidiosArray[12], totalAPagarImpostosArray[12];
+    float valorLiquidoTodosMeses = 0, encargoTotalTodosMeses = 0;
+    int codigoFuncionario, dias;
+    char cargo, op;
+
+    do {
+        do {
+            printf("Diga o seu código de funcionário: ");
+            scanf("%d", &codigoFuncionario);
+        } while (codigoFuncionario < 0);
+
+        do {
+            printf("Diga o seu cargo de trabalho --> E - empregado  C - chefe  A - administrador: ");
+            scanf(" %c", &cargo);
+        } while (cargo != 'E' && cargo != 'C' && cargo != 'A');
+
+
+        lerDiasTrabalhados(diasArray);
+
+        calcularVencimento(cargo, diasArray, valorIliquidoArray, valorSubsidioAlimentacaoArray);
+
+        resetarArrays(totalAPagarVencimentoArray, totalAPagarSubsidiosArray, totalAPagarImpostosArray, segurancaSocialArray, valorATirarDoIRSArray);
+
+        calcularIRS(valorATirarDoIRSArray, valorIliquidoArray);
+
+        calcularSegurancaSocial(cargo, segurancaSocialArray, valorIliquidoArray, valorParaEntidadePatronalArray);
+
+        calcularValorIliquido(diasArray, valorIliquidoArray);
+
+        calcularValorLiquido(valorLiquidoArray, valorIliquidoArray, valorSubsidioAlimentacaoArray, valorATirarDoIRSArray, segurancaSocialArray);
+
+        imprimirResultados(codigoFuncionario, valorIliquidoArray, valorSubsidioAlimentacaoArray, valorATirarDoIRSArray, segurancaSocialArray, valorParaEntidadePatronalArray, valorLiquidoArray, totalAPagarVencimentoArray, totalAPagarSubsidiosArray, totalAPagarImpostosArray);
+
+
+
+
+        printf("\nQuer fazer outro calculo? Diga s/S");
+        scanf(" %c", &op);
+    } while (op == 's' || op == 'S');
+}
+
 void ex4() {
 
     int m1[3][3];
@@ -149,25 +194,35 @@ void P2ex5() {
     printf("2 - SUBTRACAO");
     printf("3 - MULTIPLICACAO");
     printf("4 - DIVISAO");
+    do {
+        printf("Diga a operacao que quer: ");
+        scanf("%d", &op);
+    } while (op < 1 || op > 4);
 
     switch (op) {
         case 1:
-            imprimir(somar(int n1, int n2));
+
+            imprimir(somar(n1, n2));
+            break;
         case 2:
-            imprimir(sub(int n1, int n2));
+            imprimir(sub(n1, n2));
+            break;
         case 3:
-            imprimir(multi(int n1, int n2));
+            imprimir(multi(n1, n2));
+            break;
         case 4:
-            imprimir(divi(int n1, int n2));
+            imprimir(divi(n1, n2));
+            break;
         default:
             printf("Inseriu uma opcao invalida");
+            break;
     }
 }
 
 int main(int argc, char** argv) {
 
 
-    P2ex5();
+    P3();
     return 0;
 }
 

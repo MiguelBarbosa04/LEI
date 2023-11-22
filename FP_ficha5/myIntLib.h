@@ -29,6 +29,15 @@ extern "C" {
     float media(int soma, int tamanho);
     void valorMinAndMax(int n1, int n2);
     int potencia(int x, int y);
+    void lerDiasTrabalhados(int diasArray[]);
+    void calcularVencimento(char cargo, int diasArray[], float* valorIliquidoArray, float* valorSubsidioAlimentacaoArray);
+    void calcularIRS(float valorATirarDoIRSArray[], float valorIliquidoArray[]);
+    void resetarArrays(float totalAPagarVencimentoArray[], float totalAPagarSubsidiosArray[], float totalAPagarImpostosArray[], float segurancaSocialArray[], float valorATirarDoIRSArray[]);
+    void calcularSegurancaSocial(char cargo, float segurancaSocialArray[], float valorIliquidoArray[], float valorParaEntidadePatronalArray[]);
+    void calcularValorIliquido(int diasArray[], float valorIliquidoArray[]);
+    void calcularValorLiquido(float valorLiquidoArray[], float valorIliquidoArray[], float valorSubsidioAlimentacaoArray[], float valorATirarDoIRSArray[], float segurancaSocialArray[]);
+    void imprimirResultados(int codigoFuncionario, float valorIliquidoArray[], float valorSubsidioAlimentacaoArray[], float valorATirarDoIRSArray[], float segurancaSocialArray[], float valorParaEntidadePatronalArray[],float valorLiquidoArray[], float totalAPagarVencimentoArray[], float totalAPagarSubsidiosArray[], float totalAPagarImpostosArray[]);
+
 
 
 
