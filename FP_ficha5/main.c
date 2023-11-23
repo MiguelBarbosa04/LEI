@@ -29,12 +29,11 @@ void P3() {
     float valorLiquidoTodosMeses = 0, encargoTotalTodosMeses = 0;
     int codigoFuncionario, dias;
     char cargo, op;
+    int INT_MAX = 100;
 
     do {
-        do {
-            printf("Diga o seu código de funcionário: ");
-            scanf("%d", &codigoFuncionario);
-        } while (codigoFuncionario < 0);
+        codigoFuncionario = validarLimiteNumerico("Diga o seu código de funcionário", 0, INT_MAX);
+
 
         do {
             printf("Diga o seu cargo de trabalho --> E - empregado  C - chefe  A - administrador: ");

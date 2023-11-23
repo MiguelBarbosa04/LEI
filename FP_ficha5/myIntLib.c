@@ -158,16 +158,10 @@ int potencia(int x, int y) {
 
 void lerDiasTrabalhados(int diasArray[]) {
     for (int i = 0; i < 12; i++) {
-        do {
-            printf("Diga o número de dias que trabalhou para o mês %d: ", i + 1);
-            scanf("%d", &diasArray[i]);
+        printf("Mês %d", i + 1);
+        diasArray[i] = validarLimiteNumerico("Diga o número de dias que trabalhou", 0, 31);
 
-            if (diasArray[i] < 0 || diasArray[i] > 31) {
-                printf("O número de dias não pode ser negativo nem maior que 31. Tente novamente.\n");
-            }
-        } while (diasArray[i] < 0 || diasArray[i] > 31);
     }
-
 }
 
 void calcularVencimento(char cargo, int diasArray[], float valorIliquidoArray[], float valorSubsidioAlimentacaoArray[]) {
@@ -266,22 +260,50 @@ void imprimirResultados(int codigoFuncionario, float valorIliquidoArray[], float
 
     float valorLiquidoTodosMeses = 0, encargoTotalTodosMeses = 0;
     for (int i = 0; i < 12; i++) {
-        printf("\nMês %d:", i + 1);
-        printf("\n  Valor ilíquido: %.2f", valorIliquidoArray[i]);
-        printf("\n  Subsídio de alimentação: %.2f", valorSubsidioAlimentacaoArray[i]);
-        printf("\n  Valor a pagar ao IRS: %.2f", valorATirarDoIRSArray[i]);
-        printf("\n  Segurança Social: %.2f", segurancaSocialArray[i]);
-        printf("\n  Valor para entidade patronal: %.2f", valorParaEntidadePatronalArray[i]);
-        printf("\n  Valor líquido: %.2f\n", valorLiquidoArray[i]);
+        printf("\nO valor ilíquido do mes %d é: %.2f", i, valorIliquidoArray[i]);
+        printf("\nO valor do subsídio de alimentação do mes %d é: %.2f", i, valorSubsidioAlimentacaoArray[i]);
+        printf("\nO valor a pagar ao estado de IRS do mes %d é: %.2f", i, valorATirarDoIRSArray[i]);
+        printf("\nO valor da Segurança Social do mes %d é: %.2f", i, segurancaSocialArray[i]);
+        printf("\nO valor da entidade Patronal do mes %d é: %.2f", i, valorParaEntidadePatronalArray[i]);
+        printf("\nO valor líquido do mes %d é: %.2f\n", i, valorLiquidoArray[i]);
 
         totalAPagarVencimentoArray[i] += valorLiquidoArray[i];
         totalAPagarSubsidiosArray[i] += valorSubsidioAlimentacaoArray[i];
         totalAPagarImpostosArray[i] += valorATirarDoIRSArray[i] + segurancaSocialArray[i] + valorParaEntidadePatronalArray[i];
+        printf("\nTotal a pagar de salário aos funcionários no mes %d : %.2f", i, totalAPagarVencimentoArray[i]);
+        printf("\nTotal a pagar de subsidios no mes %d: %.2f", i, totalAPagarSubsidiosArray[i]);
+        printf("\nTotal a pagar de impostos no mes %d: %.2f", i, totalAPagarImpostosArray[i]);
     }
 
-    printf("\nResumo para o funcionário %d:", codigoFuncionario);
-    printf("\n  Valor líquido total: %.2f\n", valorLiquidoTodosMeses);
+    printf("\nO funcionário %d teve um valor liquido total de:", codigoFuncionario);
+    for (int i = 0; i < 12; i++) {
+        valorLiquidoTodosMeses += valorLiquidoArray[i];
+    }
+    printf("%.2f", valorLiquidoTodosMeses);
 
-    printf("\nResumo para a empresa:");
-    printf("\n  Encargo total de todos os meses: %.2f\n", encargoTotalTodosMeses);
+
+
+    printf("\nA empresa vai ter um encargo total de todos os meses de :");
+    for (int i = 0; i < 12; i++) {
+        encargoTotalTodosMeses += valorLiquidoArray[i];
+        encargoTotalTodosMeses += totalAPagarSubsidiosArray[i];
+        encargoTotalTodosMeses += totalAPagarImpostosArray[i];
+    }
+    printf("%.2f", encargoTotalTodosMeses);
+}
+
+int validarLimiteNumerico(const char *texto, int limiteInferior, int limiteSuperior) {
+    int valor;
+
+    do {
+        printf("%s (%d a %d): ", texto, limiteInferior, limiteSuperior);
+        scanf("%d", &valor);
+
+        if (valor < limiteInferior || valor > limiteSuperior) {
+            printf("Valor fora do intervalo permitido. Tente novamente.\n");
+        }
+
+    } while (valor < limiteInferior || valor > limiteSuperior);
+
+    return valor;
 }
