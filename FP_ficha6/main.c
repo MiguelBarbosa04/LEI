@@ -116,29 +116,29 @@ void ex5() {
 int equal(char **str1, char **str2) {
 
     //usamos double pointers para passar as variaveis tipo char para strings, não o que o ex pede !!! O que está comentado é que é o ex e é preciso por  *str1 e *str2 na funcao 
-    
-    if(*str1 == *str2){
+
+    if (*str1 == *str2) {
         return 1;
-    }else{
+    } else {
         return 0;
     }
-//    while (*str1 != '\0' && *str2 != '\0') {
-//
-//        if (*str1 != *str2) {
-//            return 0;
-//        }
-//
-//        str1++;
-//        str2++;
-//    }
+    //    while (*str1 != '\0' && *str2 != '\0') {
+    //
+    //        if (*str1 != *str2) {
+    //            return 0;
+    //        }
+    //
+    //        str1++;
+    //        str2++;
+    //    }
 
 
-//    //Veririfica se as Strings não estão vazias
-//    if (*str1 == '\0' && *str2 == '\0') {
-//        return 1;
-//    } else {
-//        return 0;
-//    }
+    //    //Veririfica se as Strings não estão vazias
+    //    if (*str1 == '\0' && *str2 == '\0') {
+    //        return 1;
+    //    } else {
+    //        return 0;
+    //    }
 }
 
 void P2ex1() {
@@ -154,12 +154,44 @@ void P2ex1() {
     printf("Resultado 1: %d\n", resultado1);
     printf("Resultado 2: %d\n", resultado2);
 
-    return 0;
+
+}
+
+void printFirst(char *str, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%c", *str);
+        str++;
+    }
+}
+
+void P2ex2() {
+    int n;
+    int length = 0;
+    char string[length];
+
+    printf("Diga a string: ");
+    scanf("%s", string);
+
+
+
+    while (string[length] != '\0') {
+        length++;
+    }
+
+
+    do {
+        printf("Diga o número (deve ser menor ou igual ao comprimento da string): ");
+        scanf("%d", &n);
+
+        if (n > length) {
+            printf("Erro: o número deve ser menor ou igual ao comprimento da string.\n");
+        }
+    } while (n > length || n < 0);
+
+    printFirst(string, n);
 }
 
 int main() {
-
-    P2ex1();
+    P2ex2();
 
 }
-
