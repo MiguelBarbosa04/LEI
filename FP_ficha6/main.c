@@ -191,7 +191,78 @@ void P2ex2() {
     printFirst(string, n);
 }
 
-int main() {
-    P2ex2();
+char *strchar(char *str, char ch) {
+    while (*str != '\0' && *str != ch) {
+        str++;
+    }
+    return str;
+}
 
+void P2ex3() {
+    char string[100];
+
+    printf("Diga a palavra: ");
+    scanf("%s", string);
+
+    int length = 0;
+    while (string[length] != '\0') {
+        length++;
+    }
+
+    char alvo = 'd';
+
+    char *result = strchar(string, alvo);
+
+    if (*result == '\0') {
+        printf("Caractere '%c' não encontrado na string.\n", alvo);
+    } else {
+        printf("Endereço do caractere '%c': %p\n", alvo, (void *) result);
+    }
+}
+
+int *findMax(int data[], int size) {
+    // Se o array estiver vazio, retorne NULL
+    if (size == 0) {
+        return NULL;
+    }
+
+    int *maxPtr = &data[0]; // Inicializa o ponteiro com o endereço do primeiro elemento
+
+    for (int i = 1; i < size; i++) {
+        // Verifica se o valor atual é maior que o valor no endereço armazenado em maxPtr
+        if (data[i] > *maxPtr) {
+            maxPtr = &data[i]; // Atualiza o ponteiro para o endereço do novo máximo
+        }
+    }
+
+    return maxPtr; // Retorna o ponteiro para o valor máximo no array
+}
+
+void P2ex4() {
+    int tam = 5;
+    int array[tam];
+
+    for (int i = 0; i < tam; i++) {
+        printf("Digite o valor número %d: ", i + 1);
+        scanf("%d", &array[i]);
+    }
+
+    printf("\nArray: ");
+    for (int i = 0; i < tam; i++) {
+        printf("%d, ", array[i]);
+    }
+
+    int *result = findMax(array, tam);
+
+    if (result != NULL) {
+        printf("\nO endereço do número maior é: %p\n", (void *) result);
+        printf("O valor do número maior é: %d\n", *result);
+    } else {
+        printf("\nO array está vazio.\n");
+    }
+}
+
+int main() {
+    P2ex4();
+    return 0;
 }
