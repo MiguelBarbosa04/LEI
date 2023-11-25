@@ -5,15 +5,134 @@ package es2_triangulo;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 
 class TriangleTest {
 
-
     @Test
     public void testTrianguloEquilatero() {
-        Triangle triangulo = new Triangle(3,5,5);
-        Assertions.assertEquals("equilateral",triangulo.classify());
+        Triangle triangulo = new Triangle(5, 5, 5);
+        Assertions.assertEquals("equilateral", triangulo.classify());
+    }
+
+    @Test
+    public void testTrianguloEquilateroBoolean() {
+        Triangle triangle = new Triangle(5, 5, 5);
+        Assertions.assertTrue(triangle.isEquilateral());
+    }
+
+    @Test
+    public void testTrianguloIsossceles() {
+        Triangle triangulo = new Triangle(4, 4, 2);
+        Assertions.assertEquals("isossceles", triangulo.classify());
+    }
+
+    @Test
+    public void testTrianguloIsosscelesBoolean() {
+        Triangle triangle = new Triangle(4, 4, 2);
+        Assertions.assertTrue(triangle.isIsosceles());
+    }
+
+    @Test
+    public void testTrianguloRightAngle() {
+        Triangle triangulo = new Triangle(5, 4, 3);
+        Assertions.assertEquals("right-angled", triangulo.classify());
+    }
+
+    @Test
+    public void testTrianguloRightAngleBoolean() {
+        Triangle triangle = new Triangle(5, 4, 3);
+        Assertions.assertTrue(triangle.isRightAngled());
+    }
+
+    @Test
+    public void testTrianguloScalene() {
+        Triangle triangulo = new Triangle(7, 5, 9);
+        Assertions.assertEquals("scalene", triangulo.classify());
+    }
+
+    @Test
+    public void testTrianguloScaleneBoolean() {
+        Triangle triangle = new Triangle(2, 3, 6);
+        Assertions.assertTrue(triangle.isScalene());
+    }
+
+    @Test
+    public void testTrianguloImpossible() {
+        Triangle triangulo = new Triangle(10, 0, 1);
+        Assertions.assertEquals("impossible", triangulo.classify());
+    }
+
+    @Test
+    public void testTrianguloImpossibleBoolean() {
+        Triangle triangle = new Triangle(10, 0, 1);
+        Assertions.assertTrue(triangle.isImpossible());
+    }
+
+    @Test
+    public void testTrianguloGetSideLengths() {
+        Triangle triangulo = new Triangle(10, 0, 1);
+        Assertions.assertEquals("10,0,1", triangulo.getSideLengths());
+    }
+
+    @Test
+    public void testTrianguloGetPerimeter() {
+        Triangle triangulo = new Triangle(10, 10, 10);
+        Assertions.assertEquals(30, triangulo.getPerimeter());
+    }
+
+    @Test
+    @DisplayName("Calculate equilateral triangle area")
+    public void testGetAreaEquilateralTriangle() {
+        Triangle triangulo = new Triangle(5, 5, 5);
+        assertEquals(7.5, triangulo.getArea(), 0.1, " sqrt((15/2)(15/2-5)(15/2-5)*(15/2-5)) = 12");
+
+        Triangle triangulo2 = new Triangle(-1, 3, 3);
+        assertEquals(-1, triangulo2.getArea(), "Triangle shouldn't be valid");
+
+        Triangle triangulo3 = new Triangle(0, 3, 3);
+        assertEquals(-1, triangulo3.getArea(), "Triangle shouldn't be valid");
+    }
+
+    @Test
+    @DisplayName("Calculate isossceles triangle area")
+    public void testGetAreaIsosscelesTriangle() {
+        Triangle triangulo = new Triangle(4, 4, 2);
+        assertEquals(4, triangulo.getArea(), 0.2, " sqrt((10/2)(10/2-4)(10/2-4)*(10/2-2)) = 4");
+
+        Triangle triangulo2 = new Triangle(-1, 4, 2);
+        assertEquals(-1, triangulo2.getArea(), "Triangle shouldn't be valid");
+
+        Triangle triangulo3 = new Triangle(0, 4, 2);
+        assertEquals(-1, triangulo3.getArea(), "Triangle shouldn't be valid");
+    }
+
+    @Test
+    @DisplayName("Calculate right angle triangle area")
+    public void testGetAreaRightAngleTriangle() {
+        Triangle triangulo = new Triangle(5, 4, 3);
+        assertEquals(6, triangulo.getArea(), 0.1, " sqrt((12/2)(12/2-5)(12/2-4)*(12/2-3)) = 6");
+
+        Triangle triangulo2 = new Triangle(-1, 4, 3);
+        assertEquals(-1, triangulo2.getArea(), "Triangle shouldn't be valid");
+
+        Triangle triangulo3 = new Triangle(0, 4, 3);
+        assertEquals(-1, triangulo3.getArea(), "Triangle shouldn't be valid");
+    }
+
+    @Test
+    @DisplayName("Calculate scalene triangle area")
+    public void testGetAreaScaleneTriangle() {
+        Triangle triangulo = new Triangle(7, 5, 9);
+        assertEquals(12, triangulo.getArea(), 0.3, " sqrt((11/2)(11/2-2)(11/2-3)*(11/2-6)) = 5");
+
+        Triangle triangulo2 = new Triangle(-1, 4, 3);
+        assertEquals(-1, triangulo2.getArea(), "Triangle shouldn't be valid");
+
+        Triangle triangulo3 = new Triangle(0, 4, 3);
+        assertEquals(-1, triangulo3.getArea(), "Triangle shouldn't be valid");
     }
 }
-
