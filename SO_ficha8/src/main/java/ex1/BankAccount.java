@@ -11,7 +11,7 @@ package ex1;
  */
 public class BankAccount {
 
-    private int money = 0;
+    private int money;
 
     public synchronized void putMoney() {
         money += 1250;

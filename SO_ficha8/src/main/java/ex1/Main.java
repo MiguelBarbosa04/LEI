@@ -5,18 +5,16 @@
  */
 package ex1;
 
-import java.util.Random;
-
 /**
  *
- * @author migue
+ * @author Miguel
  */
-public class NewMain {
+public class Main {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args){
         BankAccount bank = new BankAccount();
 
         Thread Alice = new Thread(new JobAliceBruno(bank, "Alice"));
@@ -33,5 +31,5 @@ public class NewMain {
             erro.printStackTrace();
         }
     }
-
+    
 }

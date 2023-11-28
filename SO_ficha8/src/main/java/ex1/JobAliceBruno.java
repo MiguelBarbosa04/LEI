@@ -18,7 +18,7 @@ public class JobAliceBruno implements Runnable {
     private BankAccount bank;
     private String name;
 
-    public JobAliceBruno(BankAccount bank, String name) {
+    public  JobAliceBruno(BankAccount bank, String name) {
         this.bank = bank;
         this.name = name;
     }
