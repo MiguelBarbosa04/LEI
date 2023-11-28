@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   main.c
  * Author: Miguel
  *
@@ -15,118 +15,137 @@
 #include <stdlib.h>
 
 /*
- * 
+ *
  */
 
-int obtemValor() {
+int obtemValor()
+{
 
     int r1;
-    do {
+    do
+    {
         printf("Diga o valor de 0 a 2:");
         scanf("%d", &r1);
     } while (r1 != 1 && r1 != 0 && r1 != 2);
 
     return r1;
-
 }
 
-void imprimeMatriz(int matriz[3][3]) {
+void imprimeMatriz(int matriz[3][3])
+{
 
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
             printf("%d", matriz[i][j]);
         }
         printf("\n");
     }
-
 }
 
-int verificaPosicaoVazia(int matriz[3][3], int linha, int coluna) {
+int verificaPosicaoVazia(int matriz[3][3], int linha, int coluna)
+{
 
-    if (matriz[linha][coluna] == -1) {
+    if (matriz[linha][coluna] == -1)
+    {
         printf("Disponivel");
         return 1;
-    } else {
+    }
+    else
+    {
         printf("Não Disponivel");
         return 0;
     }
-
-
 }
 
-int verificaVitoria(int matriz[3][3], int numJogador) {
+int verificaVitoria(int matriz[3][3], int numJogador)
+{
 
     int i = 0;
     int j = 0;
+    int count = 0;
 
-    //Verifica diagonais 1
-    for (int i = 0; i < 3; i++) {
-        if (matriz[i][j] == numJogador) {
+    // Verifica diagonais 1
+    for (int i = 0; i < 3; i++)
+    {
+        if (matriz[i][j] == numJogador)
+        {
             int count = 0;
             count++;
             j++;
-            if (count == 3) {
+            if (count == 3)
+            {
                 printf("O jogador %d GANHOUUUUUUU", numJogador);
             }
         }
     }
 
-
-
-    //Verifica diagonais 21
-    for (int i = 3; i > -1; i--) {
-        if (matriz[i][j] == numJogador) {
+    count = 0;
+    // Verifica diagonais 21
+    for (int i = 3; i > -1; i--)
+    {
+        if (matriz[i][j] == numJogador)
+        {
             int count = 0;
             count++;
             j++;
-            if (count == 3) {
+            if (count == 3)
+            {
                 printf("O jogador %d GANHOUUUUUUU", numJogador);
             }
         }
     }
+    count = 0;
+    // Verifica linha
+    for (int i = 0; i < 3; i++)
+    {
+        count++;
+        for (int j = 0; j < 3; j++)
+        {
+            if (matriz[i][j] == numJogador)
+            {
 
-    //Verifica linha
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            if (matriz[i][j] == numJogador) {
-                int count;
-                count++;
-                if (count == 3) {
+                if (count == 3)
+                {
                     printf("O jogador %d GANHOUUUUUUU", numJogador);
                 }
             }
         }
     }
+    count = 0;
+    // Verifica coluna
+    for (int j = 0; j < 3; j++)
+    {
+        count++;
+        for (int i = 0; i < 3; i++)
+        {
+            if (matriz[i][j] == numJogador)
+            {
 
-    //Verifica coluna
-    for (int j = 0; j < 3; j++) {
-        for (int i = 0; i < 3; i++) {
-            if (matriz[i][j] == numJogador) {
-                int count;
-                count++;
-                if (count == 3) {
+                if (count == 3)
+                {
                     printf("O jogador %d GANHOUUUUUUU", numJogador);
                 }
             }
         }
     }
-
-
-
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
 
     int linhas = 3, colunas = 3;
     int matriz[linhas][colunas];
 
-    for (int i = 0; i < linhas; i++) {
-        for (int j = 0; j < colunas; j++) {
+    for (int i = 0; i < linhas; i++)
+    {
+        for (int j = 0; j < colunas; j++)
+        {
             matriz[i][j] = -1;
         }
         printf("\n");
     }
-
 
     imprimeMatriz(matriz);
     int linhaJogada = obtemValor();
@@ -136,4 +155,3 @@ int main(int argc, char** argv) {
 
     return (EXIT_SUCCESS);
 }
-
