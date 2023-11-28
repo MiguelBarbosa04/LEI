@@ -71,7 +71,7 @@ int verificaVitoria(int matriz[3][3], int numJogador)
     {
         if (matriz[i][j] == numJogador)
         {
-            int count = 0;
+
             count++;
             j++;
             if (count == 3)
@@ -87,7 +87,7 @@ int verificaVitoria(int matriz[3][3], int numJogador)
     {
         if (matriz[i][j] == numJogador)
         {
-            int count = 0;
+
             count++;
             j++;
             if (count == 3)
@@ -130,6 +130,33 @@ int verificaVitoria(int matriz[3][3], int numJogador)
             }
         }
     }
+}
+
+int verificaVitoria2(int matriz[3][3], int jogador) {
+    //Verificar as linhas
+    for (int i = 0; i < 3; i++) {
+        if (matriz[i][0] == jogador && matriz[i][1] == jogador &&matriz[i][2] == jogador) {
+            return 1;
+        }
+    }
+    //Verificar as colunas
+    for (int j = 0; j < 3; j++) {
+        if (matriz[0][j] == jogador && matriz[1][j] == jogador &&matriz[2][j] == jogador) {
+            return 1;
+        }
+    }
+
+    //Verificar a diagonal
+    if (matriz[0][0] == jogador && matriz[1][1] == jogador &&matriz[2][2] == jogador) {
+        return 1;
+    }
+
+    //Verificar a digonal secundaria
+    if (matriz[0][2] == jogador && matriz[1][1] == jogador &&matriz[2][0] == jogador) {
+        return 1;
+    }
+
+    return 0;
 }
 
 int main(int argc, char **argv)
