@@ -22,7 +22,7 @@
 
 int main(int argc, char** argv) {
 
-    int op;
+    int op, numProcura;
     Alunos alunos = {.contador = 0};
 
 
@@ -52,20 +52,20 @@ int main(int argc, char** argv) {
                 break;
 
             case 1:
-                inserir(&alunos);
+                inserirAlunos(&alunos);
                 break;
             case 2:
-
+                procurarAlunos(&alunos);
                 break;
 
             case 3:
-                atualizar(&alunos);
+                atualizarAlunos(&alunos);
                 break;
             case 4:
-
+                removerAlunos(&alunos);
                 break;
             case 5:
-                listar(&alunos);
+                listarAlunos(&alunos);
                 break;
             default:
                 printf("1nInseriu uma opcao invalida");
