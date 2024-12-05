@@ -1,0 +1,93 @@
+1. 
+
+int main() {
+    int num1, num2;
+
+    puts("Insira o 1º valor:");
+    scanf("%d", &num1);
+
+    puts("Insira o 2º valor:");
+    scanf("%d", &num2);
+
+    printf("A soma é %d", num1 + num2);
+
+    return 0;
+}
+
+2.
+
+int main() {
+    int aluno1, aluno2, aluno3;
+
+    printf("Insira a idade do aluno 1: ");
+    scanf("%d", &aluno1);
+    printf("Insira a idade do aluno 2: ");
+    scanf("%d", &aluno2);
+    printf("Insira a idade do aluno 3: ");
+    scanf("%d", &aluno3);
+
+    printf("A média de idades é: %4.2f", (aluno1 + aluno2 + aluno3) / (float) 3);
+
+    return 0;
+}
+
+3.
+
+int main() {
+    int num1, num2;
+
+    puts("Insira o 1º valor");
+    scanf("%d", &num1);
+
+    puts("Insira o 2º valor");
+    scanf("%d", &num2);
+
+    printf("\nA soma é %d", num1 + num2);
+    printf("\nA substração é %d", num1 - num2);
+    printf("\nA multiplicação é %d", num1 * num2);
+    printf("\nA divisão é %5.3f", num1 / (float) num2);
+
+    return 0;
+}
+
+4.
+
+int main() {
+    int altura, largura;
+
+    puts("Insira a altura do retangulo");
+    scanf("%d", &altura);
+
+    puts("Insira a largura do retangulo");
+    scanf("%d", &largura);
+
+    printf("\nO perimetro do rectangulo é %d", (altura + largura) * 2);
+    printf("\nA area do rectangulo é %d", altura * largura);
+
+    return 0;
+}
+
+int main() {
+    int base, altura;
+
+    puts("Insira a base do triangulo");
+    scanf("%d", &base);
+
+    puts("Insira a altura do triangulo");
+    scanf("%d", &altura);
+
+    printf("\nA area do triangulo é %f", (base * altura) / 2.0);
+
+    return 0;
+}
+
+int main() {
+    int raio;
+
+    puts("Insira o raio do circunferência");
+    scanf("%d", &raio);
+
+    printf("\na area da circunferência é %f", (raio * raio) * PI);
+
+    return 0;
+}

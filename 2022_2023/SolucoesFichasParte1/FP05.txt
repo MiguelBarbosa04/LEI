@@ -1,0 +1,147 @@
+1.
+
+int getValue() {
+    int num;
+    puts("\nInsira um valor: ");
+    scanf("%d", &num);
+    return num;
+}
+
+void printAsterisks(int valor) {
+    int i;
+    puts("");
+    for (i = 0; i < valor; i++) {
+        printf("%c", '*');
+    }
+}
+
+int main() {
+    int input = getValue();
+
+    printAsterisks(input);
+
+    // alternativa
+    // printAsterisks(getValue());
+
+    return 0;
+}
+
+2. e 3. 
+
+------------------ Ficheiro: myIntLib.h 
+
+#ifndef MYINTLIB_H
+#define MYINTLIB_H
+
+int soma(int a, int b);
+int subtracao(int a, int b);
+int multiplicacao(int a, int b);
+float divisao(int a, int b);
+
+#endif /* MYINTLIB_H */
+
+------------------ Ficheiro: myIntLib.c
+
+#include "myIntLib.h"
+
+int soma(int a, int b) {
+    return a + b;
+}
+
+int subtracao(int a, int b) {
+    return a - b;
+}
+
+int multiplicacao(int a, int b) {
+    return a * b;
+}
+
+float divisao(int a, int b) {
+    return a / (float) b;
+}
+
+------------------ Ficheiro: main.c 
+
+int main() {
+    int operando1, operando2;
+    char operador;
+
+    printf("Insira o primeiro operador: ");
+    scanf("%d", &operando1);
+
+    printf("Insira o segundo operador: ");
+    scanf("%d", &operando2);
+
+    printf("Insira a opração: ");
+    scanf(" %c", &operador);
+
+    switch (operador) {
+        case '+':
+            printf("O resultado da soma é: %d", soma(operando1, operando2));
+            break;
+        case '-':
+            printf("O resultado da subtração é: %d", subtracao(operando1, operando2));
+            break;
+        case '*':
+            printf("O resultado da multiplicação é: %d", multiplicacao(operando1, operando2));
+            break;
+        case '/':
+            printf("O resultado da divisão é: %f", divisao(operando1, operando2));
+            break;
+    }
+
+    return 0;
+}
+
+4.
+
+#define DIM 4
+
+void presentSum(int matrix1[DIM][DIM], int matrix2[DIM][DIM]) {
+    int i, j;
+
+    for (i = 0; i < DIM; i++) {
+        puts("");
+        for (j = 0; j < DIM; j++) {
+            printf("%3d", matrix1[i][j] + matrix2[i][j]);
+        }
+    }
+}
+
+int sumValues(int matrix1[DIM][DIM], int matrix2[DIM][DIM]) {
+    int i, j, sum = 0;
+
+    for (i = 0; i < DIM; i++) {
+        for (j = 0; j < DIM; j++) {
+            sum += matrix1[i][j] + matrix2[i][j];
+        }
+    }
+
+    return sum;
+}
+
+int main() {
+    int i, j, matrix1[DIM][DIM], matrix2[DIM][DIM];
+
+    // put some values
+    for (i = 0; i < DIM; i++) {
+        for (j = 0; j < DIM; j++) {
+            matrix1[i][j] = matrix2[i][j] = i + j;
+        }
+    }
+
+    // present one the matrix
+    for (i = 0; i < DIM; i++) {
+        puts("");
+        for (j = 0; j < DIM; j++) {
+            printf("%3d", matrix1[i][j]);
+        }
+    }
+
+    puts("");
+    presentSum(matrix1, matrix2);
+
+    printf("\n\nSum of values: %d", sumValues(matrix1, matrix2));
+
+    return 0;
+}
